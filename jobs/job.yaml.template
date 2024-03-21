@@ -1,0 +1,73 @@
+---
+# Compression Direction:
+#   0 = Compress
+#   1 = Decompress
+#   2 = Both
+direction: 0
+
+# Output Buffers
+#   [start, stop, step]
+buffers: [32000, 33000, 1]
+
+# Compression Level
+#   1-9
+#   0 = all (not implemented)
+complevel: 9
+
+# Static or Dynamic
+#   0 = Static
+#   1 = Dynamic
+hufftype: 0
+
+# Stateless or Stateful
+#   0 = Stateless
+#   1 = Stateful
+state: 0
+
+# DEFLATE window size
+#   1-7
+#   0 = all (not implemented)
+deflateWinSize: 7
+
+# Starvation
+#   0 = False
+#   1 = True
+starvation: 0
+
+#######################################
+#         Input Parameters            #
+#######################################
+
+# input_src:    This is the source of input
+#               either a generator or file
+#               or directory
+#
+# Additional params will be required for each
+# input_src, shown below
+
+# Supported input_src values:
+#   fileset     This is either a directory or individual file
+#   freq_gen    Chris Cunningham's frequency scripts
+#   presi_gen   Chris Cunningham's original script
+
+#######################################
+#            fileset                  #
+#######################################
+
+input_src: "fileset"            # Source
+input_path: "/root/local.bin"   # File/Dir
+input_offs: [0, 16]             # Offset: [Start offset, Increment]
+input_sz: 65536                 # Input size
+
+#######################################
+#            freq_gen                 #
+#######################################
+
+#input_src: "freq_gen"
+#seed: [0, 10000]    # [start, stop]
+
+#######################################
+#            presi_gen                #
+#######################################
+#input_src: "presi_gen"
+# more to come

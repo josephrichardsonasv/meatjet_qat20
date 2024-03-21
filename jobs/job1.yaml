@@ -1,0 +1,27 @@
+---
+# Compression direction 
+direction: 2
+
+# Buffers
+buffers: [32000, 33000, 1]
+
+# Compression level
+complevel: 9
+
+# Static or Dynamic
+hufftype: 0
+
+# Stateless or Stateful
+state: 0
+
+# DEFLATE window size
+deflateWinSize: 7
+
+# Starvation?
+starvation: 0
+
+# Input
+input_src: "fileset"                # Source Type (file or dir of files in this case)
+input_path: "/root/engine/local"    # File/Dir (path to file or dir)
+input_offs: [0, 1024]               # Offset: [Start offset, Increment] (start @ 0, and do every 1k after)
+input_sz: 32768                     # Input size -- size of the input!

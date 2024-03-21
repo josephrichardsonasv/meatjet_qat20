@@ -1,0 +1,42 @@
+#!/usr/bin/make -f
+#Install QAT Acceleration (option 2)
+#CL_INSTALL_OPTION
+CL_INSTALL_LOCATION=$(CURDIR)
+DIRSTOCOPY=$(CURDIR)/debian/qat-meatjet
+
+#env vars to build CLC QAT driver
+KERNEL_SOURCE_ROOT=/usr/src/svos-headers-3.10.7-x86-64-svos-maxcpu
+export KERNEL_SOURCE_ROOT
+
+#Set paths to svos-qat-dev files
+ICP_ROOT=/usr/qat
+export ICP_ROOT
+LDIR=/usr/qat/build
+export LDIR
+IDIR=-I$(ICP_ROOT) -I ../qat_mem -I/usr/include/python2.7
+export IDIR
+
+
+%:
+	dh $@
+
+override_dh_auto_clean:
+	$(MAKE) -C seaside clean
+	$(MAKE) -C qat_mem clean
+
+override_dh_auto_build:
+	#build qat_mem
+	#$(MAKE) -C qat_mem KDIR
+	$(MAKE) -C qat_mem all
+	$(MAKE) -C seaside
+
+override_dh_auto_install:
+
+	install -D -m 640  $(CURDIR)/qat_mem/qat_mem.ko $(DIRSTOCOPY)/usr/local/meatjet/qat_mem.ko
+	#rename test to meatjet
+	install -D $(CURDIR)/seaside/meatjet $(DIRSTOCOPY)/usr/local/meatjet/meatjet
+	install -D -m 755 meatjet.py $(DIRSTOCOPY)/usr/local/meatjet/meatjet.py
+    #python seaside/setup.py install --root=$(DIRSTOCOPY) --install-layout=deb --install-lib=/usr/share/meatjet --install-scripts=/usr/local/meatjet.py
+
+override_dh_usrlocal:
+

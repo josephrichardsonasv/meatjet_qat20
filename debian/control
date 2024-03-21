@@ -1,0 +1,12 @@
+Source: qat-meatjet
+Section: intel
+Priority: Optional
+Maintainer: Russell Pike <russell.t.pike@intel.com>
+Standards-Version: 3.9.3
+Build-Depends: svos-headers-3.10.7-x86-64-svos-maxcpu, svos-dev-base, svos-qat-dev, python2.7-dev
+Homepage: http://psvreview.intel.com/w/projects/cpm-compression/svos-qat-tips/
+
+Package: qat-meatjet
+Architecture: any
+Depends: svos-qat, python2.7-dev, python2.7
+Description: Meatgrinder - compression test infrastructure
