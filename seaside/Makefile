@@ -21,13 +21,13 @@ ifndef BUILD_MG_FROM_SRC
 	IDIR += -I$(ICP_SAMPLE_CODE)/framework/linux/user_space
 	IDIR += -I$(ICP_SAMPLE_CODE)/qae
 	IDIR += -I$(ICP_ROOT)/quickassist/lookaside/access_layer/src/sample_code/busy_loop
-    IDIR += -I$(ICP_ROOT)/quickassist/utilities/libusdm_drv/linux/include
+        IDIR += -I$(ICP_ROOT)/quickassist/lookaside/access_layer/src/sample_code/build
+        IDIR += -I$(ICP_ROOT)/quickassist/utilities/libusdm_drv/linux/include
         IDIR += -I$(ICP_ROOT)/quickassist/include/lac
 
 
 	LDIR := $(ICP_ROOT)/build
-        #LDIRC := $(ICP_ROOT)/quickassist/lookaside/access_layer/src/sample_code/build
-
+        
 	DEPS := chklib
 
 else
@@ -67,9 +67,9 @@ LIBS := -lpthread -ldl -lutil -lm -Xlinker -export-dynamic -lz -ludev
 
 CC = gcc
 #CFLAGS = -Wall -Wextra -Werror -g -c -O0 -fms-extensions -fPIC -Wpointer-arith
-CFLAGS = -g -c -O0 -fms-extensions -fPIC -Wpointer-arith
+CFLAGS = -Wextra -Werror -g -c -O0 -fms-extensions -fPIC -Wpointer-arith
 
-LDFLAGS = $(LDIR)/libusdm_drv.a $(LDIR)/libqat.a $(LDIR)/libadf.a $(LDIR)/libosal.a -lrt -lcrypto $(LDIR)/cpa_sample_code_s.so $(LIBS)
+LDFLAGS = $(LDIR)/libusdm_drv.a $(LDIR)/libqat.a $(LDIR)/libadf.a $(LDIR)/libosal.a -lrt -lcrypto $(ICP_SAMPLE_CODE)/../build/cpa_sample_code_s.so $(LIBS)
 
 DEFINES = -DUSE_QAT_MEM -D_XOPEN_SOURCE=500 -DMG_UNIT_TEST -D_GNU_SOURCE -D$(PROJ) -DUSER_SPACE
 
