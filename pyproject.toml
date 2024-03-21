@@ -1,0 +1,36 @@
+[tool.poetry]
+authors = ["ADO ADD OR <ado.add.or@intel.com>"]
+description = "Cookiecutter template for a Python package."
+name = "test-automation-library-template"
+version = "0.1.0"
+
+[[tool.poetry.source]]
+name = "prod-pypi"
+url = "https://af-owr.devtools.intel.com/artifactory/api/pypi/adoaddautomation-or-local/simple"
+priority="default"
+
+[tool.poetry.dependencies]
+python = "^3.8.3"
+cookiecutter = "^2.1.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+pytest-cov = "^4.0.0"
+flake8 = "^6.0.0"
+flake8-isort = "^6.0.0"
+pep8-naming = "^0.13.3"
+mccabe = "^0.7.0"
+flake8-bandit = "^4.1.1"
+flake8-comprehensions = "^3.12.0"
+flake8-bugbear = "^23.5.9"
+myst-parser = "^1.0.0"
+furo = "^2023.3.27"
+cicd-tasks = "^1.0.3"
+sphinx-design = "^0.4.1"
+
+[tool.isort]
+profile = "black"
+
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]

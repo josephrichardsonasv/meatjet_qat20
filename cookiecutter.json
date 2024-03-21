@@ -1,0 +1,13 @@
+{
+    "project_name": "Project Name",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "project_description": "",
+    "powershell_wrapper": "no",
+    "command_name": "{% if cookiecutter.powershell_wrapper != 'no' %}{{cookiecutter.project_slug}}{% else %}default_command{% endif %}",
+    "command_extension": "exe",
+    "command_search_path": "default_command_path",
+    "pypi_index": "https://ubit-artifactory-or.intel.com/artifactory/api/pypi/adoaddautomation-or-local/simple",
+    "python_version": "~3.8.3",
+    "use_jenkins_library_for_ci_cd": "yes",
+    "author": "CCG CPE C4S ADD OR <ado.add.or@intel.com>"
+}
